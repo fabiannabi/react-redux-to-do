@@ -1,6 +1,7 @@
 
 import './App.css';
 import Todos from './Todos'
+import AddTodo from './AddForm'
 import React, {Component} from 'react'
 
 class App extends Component {
@@ -21,9 +22,17 @@ class App extends Component {
     });
 
     this.setState({
-      todos: todos,
+      todos
     });
 
+  }
+
+  addTodo = (todo) =>{
+    const todos = [...this.state.todos, todo];
+
+    this.setState({
+      todos
+    })
   }
 
   render() {
@@ -32,6 +41,9 @@ class App extends Component {
         <h1 className="center blue-text">To Do List</h1>
         <Todos todos={this.state.todos}
           deleteTodo = {this.deleteTodo}
+        />
+        <AddTodo
+          addTodo={this.addTodo}
         />
       </div>
     );
